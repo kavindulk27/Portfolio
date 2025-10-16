@@ -67,7 +67,7 @@ export default function Hero() {
                   data-testid="link-github"
                 >
                   <a 
-                    href="https://github.com/kavi0427" 
+                    href="https://github.com/kavindulk27" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >

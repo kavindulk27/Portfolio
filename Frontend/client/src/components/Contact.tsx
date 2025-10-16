@@ -40,8 +40,8 @@ export default function Contact() {
     {
       icon: Github,
       label: "GitHub",
-      value: "github.com/kavi0427",
-      href: "https://github.com/kavi0427",
+      value: "github.com/kavindulk27",
+      href: "https://github.com/kavindulk27",
     },
     {
       icon: Linkedin,

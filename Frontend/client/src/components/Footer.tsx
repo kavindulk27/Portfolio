@@ -58,7 +58,7 @@ export default function Footer() {
           <div className="flex gap-2">
             <Button variant="ghost" size="icon" asChild data-testid="link-footer-github">
               <a 
-                href="https://github.com/kavi0427" 
+                href="https://github.com/kavindulk27" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="GitHub"

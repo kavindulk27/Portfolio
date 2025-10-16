@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -5,8 +8,8 @@ const education = [
   {
     id: 1,
     degree: "Higher National Diploma in Information Technology",
-    institution: "SLIATE Galle",
-    location: "Galle, Sri Lanka",
+    institution: "SLIATE",
+    location: "Labuduwa, Galle, Sri Lanka",
     period: "2023 - Present",
     details: [],
   },
@@ -16,7 +19,7 @@ const education = [
     institution: "St Thomas College",
     location: "Matara, Sri Lanka",
     period: "2021",
-    details: ["Completed (C) passes in ART Stream"],
+    details: ["Completed (C) passes in Art Stream"],
   },
   {
     id: 3,
@@ -30,49 +33,81 @@ const education = [
 
 export default function Education() {
   return (
-    <section className="py-20 px-6" id="education">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold tracking-tight mb-4 text-center" data-testid="heading-education">
+    <section
+      className="py-20 px-6 bg-gradient-to-b from-muted/30 to-background"
+      id="education"
+    >
+      <div className="max-w-5xl mx-auto relative">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold tracking-tight mb-4 text-center"
+        >
           Education
-        </h2>
-        <p className="text-center text-muted-foreground mb-12">
-          My academic journey and qualifications
-        </p>
+        </motion.h2>
 
-        <div className="relative">
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
+        >
+          My academic background and professional qualifications.
+        </motion.p>
+
+        {/* Timeline */}
+        <div className="relative pl-8 md:pl-16">
+          {/* Vertical line */}
+          <div className="absolute left-[22px] md:left-[32px] top-0 bottom-0 w-[2px] bg-primary/30" />
 
           <div className="space-y-12">
             {education.map((edu, index) => (
-              <div key={edu.id} className="relative pl-8 md:pl-20">
-                <div className="absolute left-[-8px] md:left-[24px] top-1 p-2 rounded-full bg-background border-2 border-primary">
-                  <GraduationCap className="h-4 w-4 text-primary" />
+              <motion.div
+                key={edu.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="relative flex items-start gap-6"
+              >
+                {/* Icon bubble */}
+                <div className="relative z-10 flex-shrink-0 mt-2">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 border-2 border-primary/40 shadow-sm hover:shadow-primary/40 transition-all duration-300">
+                    <GraduationCap className="h-5 w-5 text-primary" />
+                  </div>
                 </div>
 
-                <div className="space-y-2" data-testid={`education-item-${edu.id}`}>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-xl font-semibold" data-testid={`text-degree-${edu.id}`}>
+                {/* Content card */}
+                <div className="flex-1 p-6 rounded-xl bg-card/50 backdrop-blur-md border border-border/40 hover:shadow-lg transition-all duration-300">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <h3 className="text-xl font-semibold text-foreground">
                       {edu.degree}
                     </h3>
                     {index === 0 && (
-                      <Badge variant="default" data-testid="badge-current">Current</Badge>
+                      <Badge variant="default" className="animate-pulse">
+                        Current
+                      </Badge>
                     )}
                   </div>
-                  <p className="text-muted-foreground" data-testid={`text-institution-${edu.id}`}>
+
+                  <p className="text-muted-foreground font-medium">
                     {edu.institution}
                   </p>
-                  <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
-                    <span data-testid={`text-location-${edu.id}`}>{edu.location}</span>
+
+                  <div className="flex flex-wrap gap-3 text-sm text-muted-foreground mt-1">
+                    <span>{edu.location}</span>
                     <span>•</span>
-                    <span data-testid={`text-period-${edu.id}`}>{edu.period}</span>
+                    <span>{edu.period}</span>
                   </div>
+
                   {edu.details.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="flex flex-wrap gap-2 pt-3">
                       {edu.details.map((detail, detailIndex) => (
-                        <Badge 
-                          key={detailIndex} 
+                        <Badge
+                          key={detailIndex}
                           variant="secondary"
-                          data-testid={`badge-detail-${edu.id}-${detailIndex}`}
+                          className="text-xs"
                         >
                           {detail}
                         </Badge>
@@ -80,21 +115,34 @@ export default function Education() {
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 p-6 rounded-lg bg-muted/50 border border-border">
-          <h3 className="text-lg font-semibold mb-3" data-testid="heading-certificates">Certificates</h3>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium" data-testid="text-cert-name">Certificate of English Language</p>
-              <p className="text-sm text-muted-foreground" data-testid="text-cert-org">BritishWay English Academy, Matara</p>
-              <p className="text-sm text-muted-foreground" data-testid="text-cert-year">2021</p>
+        {/* Certificates Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 p-6 rounded-xl bg-gradient-to-br from-card via-muted/30 to-background border border-border/40 shadow-sm hover:shadow-lg transition-all"
+        >
+          <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            🎓 Certificates
+          </h3>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="p-4 rounded-lg bg-background/60 border border-border/30 hover:border-primary/40 transition-all">
+              <p className="font-medium text-foreground">
+                Certificate of English Language
+              </p>
+              <p className="text-sm text-muted-foreground">
+                BritishWay English Academy, Matara
+              </p>
+              <p className="text-sm text-muted-foreground">2021</p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
