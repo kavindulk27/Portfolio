@@ -26,57 +26,82 @@ const experiences = [
 
 export default function WorkExperienceTimeline() {
   return (
-    <section className="py-20 px-6 bg-muted/10" id="experience">
-      <div className="max-w-5xl mx-auto">
+    <section
+      id="experience"
+      className="py-24 px-6 bg-gradient-to-b from-[#0b0b0d] via-[#141416] to-[#0b0b0d]"
+    >
+      <div className="max-w-6xl mx-auto text-center">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold tracking-tight mb-12 text-center"
+          className="text-5xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
         >
           Work Experience
         </motion.h2>
 
-        <div className="relative before:absolute before:left-1/2 before:top-0 before:h-full before:w-[2px] before:bg-primary/20">
-          {experiences.map((exp, index) => {
-            const isLeft = index % 2 === 0;
-            return (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className={`mb-12 flex justify-between items-center w-full ${
-                  isLeft ? "flex-row" : "flex-row-reverse"
-                }`}
-              >
-                <div className="w-1/2"></div> {/* Empty space for timeline */}
-                <div className="w-1/2 relative z-10">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="p-2 rounded-full bg-primary/20">
-                      <Briefcase className="h-6 w-6 text-primary" />
+        <p className="text-gray-400 mb-16 text-lg max-w-2xl mx-auto">
+          A journey through my professional experience — crafting, building, and innovating.
+        </p>
+
+        <div className="relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-[3px] h-full bg-gradient-to-b from-primary/30 to-purple-500/30" />
+
+          <div className="space-y-16">
+            {experiences.map((exp, index) => {
+              const isLeft = index % 2 === 0;
+              return (
+                <motion.div
+                  key={exp.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className={`relative flex flex-col md:flex-row items-center ${
+                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+                >
+                  <div className="md:w-1/2"></div>
+
+                  {/* Experience Card */}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    className="md:w-1/2 relative z-10 backdrop-blur-md bg-white/10 border border-white/20 p-8 rounded-2xl shadow-lg hover:shadow-purple-500/30 transition-all duration-500"
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-3 rounded-full bg-gradient-to-br from-primary to-purple-500 shadow-md">
+                        <Briefcase className="h-5 w-5 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-semibold text-white">
+                        {exp.role}
+                      </h3>
                     </div>
-                    <h3 className="text-xl font-semibold">{exp.role}</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-1">{exp.company}</p>
-                  <p className="text-xs text-muted-foreground mb-3">{exp.duration}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    {exp.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.techStack.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-all"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+
+                    <p className="text-sm text-gray-300 mb-1">{exp.company}</p>
+                    <p className="text-xs text-gray-400 mb-4 italic">
+                      {exp.duration}
+                    </p>
+                    <p className="text-sm text-gray-300 leading-relaxed mb-5">
+                      {exp.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {exp.techStack.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-primary/20 text-white border border-purple-400/20 hover:from-purple-500/30 hover:to-primary/30 transition-all"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-primary to-purple-500 w-5 h-5 rounded-full shadow-lg border-4 border-[#0b0b0d]"></div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

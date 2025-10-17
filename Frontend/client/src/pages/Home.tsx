@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WorkExperienceTimeline from "@/components/WorkExperienceTimeline";
+
 export default function Home() {
   return (
     <div className="min-h-screen">
