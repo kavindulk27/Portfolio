@@ -1,158 +1,148 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import profileImage from "@assets/generated_images/Professional_developer_headshot_portrait_d69310b8.png";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import profileImage from '@assets/generated_images/Professional_developer_headshot_portrait_d69310b8.png';
 
 export default function Hero() {
   const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/attached_assets/K.L Kumanayaka CV  (1)_1759290916564.pdf";
-    link.download = "Kavindu_Kumanayaka_CV.pdf";
+    const link = document.createElement('a');
+    link.href = '/attached_assets/K.L Kumanayaka CV  (1)_1759290916564.pdf';
+    link.download = 'Kavindu_Kumanayaka_CV.pdf';
     link.click();
   };
 
   const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section
-      id="hero"
-      className="relative flex flex-col items-center justify-center min-h-[100vh] px-6 py-20 overflow-hidden text-center"
-    >
-      {/* Background gradient blobs */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
-      <div className="absolute top-20 right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
+    <section className="min-h-[80vh] flex items-center py-20 px-6">
+      <div className="max-w-6xl mx-auto w-full">
+        <Card className="p-8 md:p-12">
+          {/* CV Header Section */}
+          <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
+            {/* Profile Photo */}
+            <div className="flex-shrink-0">
+              <div className="aspect-square w-40 rounded-full overflow-hidden border-4 border-primary/20">
+                <img 
+                  src={profileImage} 
+                  alt="Kavindu Kumanayaka" 
+                  className="w-full h-full object-cover"
+                  data-testid="img-profile"
+                />
+              </div>
+            </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 w-full max-w-4xl mx-auto"
-      >
-        {/* Profile Image */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative mx-auto mb-10"
-        >
-          <div className="relative w-44 h-44 mx-auto rounded-full overflow-hidden border-4 border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.2)]">
-            <img src={profileImage} alt="Kavindu Kumanayaka" className="w-full h-full object-cover" />
+            {/* Name and Title */}
+            <div className="flex-1 space-y-4">
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2" data-testid="text-name">
+                  Kavindu Kumanayaka
+                </h1>
+                <p className="text-xl md:text-2xl font-medium text-primary" data-testid="text-title">
+                  Software Developer (Undergraduate)
+                </p>
+              </div>
+
+              {/* Contact Information */}
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2" data-testid="contact-location">
+                  <MapPin className="h-4 w-4" />
+                  <span>SLIATE Labuduwa</span>
+                </div>
+                <div className="flex items-center gap-2" data-testid="contact-email">
+                  <Mail className="h-4 w-4" />
+                  <span>kavindu@example.com</span>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  asChild
+                  data-testid="link-github"
+                >
+                  <a 
+                    href="https://github.com/kavi0427" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-4 w-4 mr-2" />
+                    GitHub
+                  </a>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  asChild
+                  data-testid="link-linkedin"
+                >
+                  <a 
+                    href="https://linkedin.com/in/kavindu-lakshan-485427370" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <Linkedin className="h-4 w-4 mr-2" />
+                    LinkedIn
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-3">
+              <Button 
+                size="lg" 
+                onClick={scrollToProjects}
+                data-testid="button-view-projects"
+              >
+                View Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={handleDownloadCV}
+                data-testid="button-download-cv"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download CV
+              </Button>
+            </div>
           </div>
-        </motion.div>
 
-        {/* Pixel Gradient Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-[#00F5A0] via-[#00D9F5] to-[#9B5FFF] bg-clip-text text-transparent"
-          style={{
-            fontFamily: "'Audiowide', 'Orbitron', 'Poppins', sans-serif",
-            letterSpacing: "1px",
-          }}
-        >
-          Kavindu Kumanayaka
-        </motion.h1>
+          <Separator className="my-6" />
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-xl md:text-2xl font-medium text-muted-foreground"
-        >
-          Software Developer (Undergraduate)
-        </motion.p>
-
-        {/* Contact Info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-4 mt-6 text-sm text-muted-foreground"
-        >
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-primary" />
-            <span>Matara, Sri Lanka</span>
+          {/* Professional Summary */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-semibold">Professional Summary</h2>
+            <p className="text-muted-foreground leading-relaxed" data-testid="text-bio">
+              Motivated and dedicated Information Technology undergraduate pursuing HNDIT at SLIATE Labuduwa. 
+              A quick learner with strong problem-solving skills, seeking internship opportunities to apply IT knowledge 
+              in real-world environments.
+            </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Mail className="h-4 w-4 text-primary" />
-            <span>kavindukumanayaka@gmail.com</span>
+
+          <Separator className="my-6" />
+
+          {/* Core Skills */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-semibold">Core Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="secondary" data-testid="badge-tech-html">HTML/CSS</Badge>
+              <Badge variant="secondary" data-testid="badge-tech-javascript">JavaScript</Badge>
+              <Badge variant="secondary" data-testid="badge-tech-php">PHP</Badge>
+              <Badge variant="secondary" data-testid="badge-tech-mysql">MySQL</Badge>
+              <Badge variant="secondary" data-testid="badge-tech-flutter">Flutter</Badge>
+              <Badge variant="secondary" data-testid="badge-tech-firebase">Firebase</Badge>
+            </div>
           </div>
-        </motion.div>
-
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-4 mt-10"
-        >
-          <Button
-            onClick={scrollToProjects}
-            className="group bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-black font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all"
-          >
-            View Projects <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={handleDownloadCV}
-            className="px-6 py-3 rounded-full border border-white/30 hover:bg-white/10 hover:text-white transition-all"
-          >
-            <Download className="mr-2 h-4 w-4" /> Download CV
-          </Button>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="flex justify-center gap-4 mt-8"
-        >
-          <a
-            href="https://github.com/kavindulk27"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-[#00F5A0] transition-colors"
-          >
-            <Github className="h-6 w-6" />
-          </a>
-          <a
-            href="https://linkedin.com/in/kavindu-lakshan-485427370"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-[#00D9F5] transition-colors"
-          >
-            <Linkedin className="h-6 w-6" />
-          </a>
-        </motion.div>
-
-        {/* Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-3 mt-12"
-        >
-          {["HTML/CSS", "JavaScript", "PHP", "MySQL", "Flutter", "Firebase"].map((skill, i) => (
-            <Badge
-              key={i}
-              variant="secondary"
-              className="px-3 py-1 rounded-full border border-white/20 bg-white/5 hover:bg-[#00F5A0]/10 hover:border-[#00F5A0]/40 transition-all"
-            >
-              {skill}
-            </Badge>
-          ))}
-        </motion.div>
-      </motion.div>
+        </Card>
+      </div>
     </section>
   );
 }
