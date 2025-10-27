@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response, NextFunction } from "express";
 import fs from "fs";
 import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
@@ -31,7 +31,7 @@ export async function setupVite(app: Express, server: any) {
 
   app.use(vite.middlewares);
 
-  app.use("*", async (req, res, next) => {
+  app.use("*", async (req: Request, res: Response, next: NextFunction) => {
     try {
       const templatePath = path.resolve("client", "index.html");
       let template = await fs.promises.readFile(templatePath, "utf-8");

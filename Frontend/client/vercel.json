@@ -3,16 +3,27 @@
   "builds": [
     {
       "src": "server/index.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": { "runtime": "nodejs22.x" }
     },
     {
-      "src": "client/**/*",
+      "src": "client/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist/public" }
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/server/index.ts" },
-    { "src": "/(.*)", "dest": "/dist/public/index.html" }
+    {
+      "src": "/attached_assets/(.*)",
+      "dest": "/server/index.ts"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server/index.ts"
+    }
   ]
 }

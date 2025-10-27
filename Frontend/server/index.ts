@@ -6,14 +6,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Logger middleware
+// Logging middleware
 app.use((req: Request, res: Response, next: NextFunction) => {
   const start = Date.now();
   const path = req.path;
   let capturedJsonResponse: any;
 
   const originalResJson = res.json.bind(res);
-  res.json = function (bodyJson: any) {
+  res.json = (bodyJson: any) => {
     capturedJsonResponse = bodyJson;
     return originalResJson(bodyJson);
   };
@@ -23,7 +23,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      if (logLine.length > 80) logLine = logLine.slice(0, 79) + "\u2026";
+      if (logLine.length > 80) logLine = logLine.slice(0, 79) + "…";
       log(logLine);
     }
   });
@@ -31,6 +31,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
+// Main async setup
 (async () => {
   const server = await registerRoutes(app);
 
