@@ -3,15 +3,14 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Logging middleware for /api routes
+// Logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+  let capturedJsonResponse: Record<string, any> | undefined;
 
   const originalResJson = res.json;
   res.json = function (bodyJson, ...args) {
@@ -35,7 +34,7 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  // Global error handler
+  // Error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
@@ -43,7 +42,6 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // Setup Vite only in development
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
