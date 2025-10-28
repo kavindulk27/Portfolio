@@ -1,6 +1,6 @@
-import { Card } from "@/components/ui/card";
+import { Card } from "../components/ui/card";
 import { GraduationCap, Code, FolderGit2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "../components/ui/badge";
 
 export default function About() {
   return (

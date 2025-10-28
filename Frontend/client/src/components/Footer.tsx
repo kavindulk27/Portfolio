@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 export default function Footer() {
   const scrollToSection = (id: string) => {

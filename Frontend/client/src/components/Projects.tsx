@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
 import restaurantImage from '@assets/generated_images/Restaurant_DBMS_interface_screenshot_e86a32b0.png';
 import studentImage from '@assets/generated_images/Student_management_app_mockup_7b7c2c9a.png';
 import tourismImage from '@assets/generated_images/Tourism_website_mockup_screenshot_b8978a4a.png';

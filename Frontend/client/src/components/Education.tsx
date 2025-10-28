@@ -1,5 +1,5 @@
 import { GraduationCap } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "../components/ui/badge";
 
 const education = [
   {
