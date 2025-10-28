@@ -17,10 +17,10 @@ export default function Home() {
   const navItems = [
     { id: "hero", label: "Home" },
     { id: "about", label: "About" },
-    { id: "projects", label: "Skills" },
-    { id: "experience", label: "Projects" }, // New
-    { id: "education", label: "Work Experience" },
-    { id: "skills", label: "Education" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" }, // New
+    { id: "experience", label: "Work Experience" },
+    { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -102,10 +102,10 @@ export default function Home() {
       <main className="pt-20 md:pt-24 scroll-smooth">
         <section id="hero"><Hero /></section>
         <section id="about"><About /></section>
+        <section id="skills"><Skills /></section>
         <section id="projects"><Projects /></section>
         <section id="experience"><WorkExperience /></section> {/* New Section */}
         <section id="education"><Education /></section>
-        <section id="skills"><Skills /></section>
         <section id="contact"><Contact /></section>
       </main>
 

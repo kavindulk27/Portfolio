@@ -33,55 +33,61 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="py-20 px-6 bg-muted/30" id="projects">
+    <section className="py-24 px-6 bg-muted/10" id="projects">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold tracking-tight mb-4 text-center" data-testid="heading-projects">
+        {/* Section Title */}
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
           Featured Projects
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
           A showcase of my development work, from database systems to mobile applications
         </p>
 
+        {/* Projects Grid */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <Card 
-              key={project.id} 
-              className="overflow-hidden hover-elevate group"
-              data-testid={`card-project-${project.id}`}
+            <Card
+              key={project.id}
+              className="overflow-hidden relative rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-md hover:shadow-2xl transition duration-500 group"
             >
-              <div className="aspect-video overflow-hidden bg-muted">
+              {/* Image */}
+              <div className="aspect-video overflow-hidden rounded-t-3xl bg-muted">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  data-testid={`img-project-${project.id}`}
                 />
               </div>
+
+              {/* Project Info */}
               <div className="p-6 space-y-4">
                 <div>
-                  <Badge variant="outline" className="mb-3" data-testid={`badge-type-${project.id}`}>
+                  <Badge
+                    variant="outline"
+                    className="mb-3 px-3 py-1 rounded-full text-sm text-primary border border-primary/30"
+                  >
                     {project.type}
                   </Badge>
-                  <h3 className="text-xl font-semibold mb-2" data-testid={`text-title-${project.id}`}>
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`text-description-${project.id}`}>
-                    {project.description}
-                  </p>
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
                 </div>
-                <div className="flex flex-wrap gap-2">
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mt-2">
                   {project.technologies.map((tech, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="text-xs font-mono"
-                      data-testid={`badge-tech-${project.id}-${index}`}
+                    <Badge
+                      key={index}
+                      variant="secondary"
+                      className="text-xs font-mono bg-primary/10 border border-primary/20 rounded-full px-2 py-1"
                     >
                       {tech}
                     </Badge>
                   ))}
                 </div>
               </div>
+
+              {/* Gradient accent overlay */}
+              <div className="absolute -top-4 -right-4 w-14 h-14 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 pointer-events-none"></div>
             </Card>
           ))}
         </div>
