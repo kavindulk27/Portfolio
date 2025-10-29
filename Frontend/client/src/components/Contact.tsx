@@ -2,8 +2,9 @@ import { Card } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,17 +13,43 @@ export default function Contact() {
     message: "",
   });
 
+  const [isSending, setIsSending] = useState(false);
+
+  // ✅ EmailJS integration with loading spinner
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", message: "" });
+    setIsSending(true);
+
+    emailjs
+      .send(
+        "service_mt65ofk", // 🔹 Your EmailJS service ID
+        "template_71p3pw9", // 🔹 Your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "1hzg79Lo5qdbfUaQE" // 🔹 Your Public Key
+      )
+      .then(
+        () => {
+          alert("✅ Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+          setIsSending(false);
+        },
+        (error) => {
+          console.error("❌ Error sending email:", error);
+          alert("Something went wrong. Please try again later.");
+          setIsSending(false);
+        }
+      );
   };
 
   const contactInfo = [
     { icon: Mail, label: "Email", value: "kavindukumanayaka@gmail.com", href: "mailto:kavindukumanayaka@gmail.com" },
     { icon: Phone, label: "Phone", value: "0773490598", href: "tel:0773490598" },
     { icon: MapPin, label: "Location", value: "Akurugoda, Kamburupitiya, Sri Lanka", href: null },
-    { icon: Github, label: "GitHub", value: "github.com/kavi0427", href: "https://github.com/kavi0427" },
+    { icon: Github, label: "GitHub", value: "github.com/kavindulk27", href: "https://github.com/kavindulk27" },
     { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/kavindu-lakshan", href: "https://linkedin.com/in/kavindu-lakshan-485427370" },
   ];
 
@@ -102,10 +129,20 @@ export default function Contact() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-semibold rounded-2xl"
+                disabled={isSending}
+                className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-semibold rounded-2xl flex items-center justify-center"
               >
-                <Send className="mr-2 h-4 w-4" />
-                Send Message
+                {isSending ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </div>
