@@ -3,7 +3,7 @@ import { Badge } from "../components/ui/badge";
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 px-6 bg-gradient-to-b from-background via-background to-muted/10 overflow-hidden">
+    <section id="about" className="relatipx-6 bg-gradient-to-b from-background via-background to-muted/10 overflow-hidden">
       {/* Subtle floating gradients */}
       <div className="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-blue-500/20 blur-3xl animate-pulse"></div>
       <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-pink-500/10 blur-3xl animate-pulse"></div>
