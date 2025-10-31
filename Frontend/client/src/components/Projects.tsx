@@ -1,5 +1,10 @@
-import { Card } from "../components/ui/card";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
+import { Button } from "../components/ui/button";
+import { ExternalLink, Github, Code, Cpu, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
+
 import restaurantImage from '@assets/generated_images/Restaurant_DBMS_interface_screenshot_e86a32b0.png';
 import studentImage from '@assets/generated_images/Student_management_app_mockup_7b7c2c9a.png';
 import tourismImage from '@assets/generated_images/Tourism_website_mockup_screenshot_b8978a4a.png';
@@ -32,64 +37,129 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [visibleProjects, setVisibleProjects] = useState(3);
+  const floatingIcons = [Code, Cpu, Rocket];
+
+  const loadMoreProjects = () => setVisibleProjects(projects.length);
+  const showLessProjects = () => setVisibleProjects(3);
+
   return (
-    <section className="py-24 px-6 bg-muted/10" id="projects">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
-          Featured Projects
-        </h2>
-        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          A showcase of my development work, from database systems to mobile applications
-        </p>
+    <section
+      id="projects"
+      className="relative py-16 overflow-hidden bg-gradient-to-b from-background/50 via-muted/20 to-background/80"
+    >
+      {/* Floating Background Icons */}
+      {floatingIcons.map((Icon, i) => (
+        <div
+          key={i}
+          className="absolute text-primary/10"
+          style={{
+            top: `${10 + i * 35}%`,
+            left: `${5 + i * 35}%`,
+            fontSize: 64,
+          }}
+        >
+          <Icon />
+        </div>
+      ))}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
+            Featured Projects
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            💻 A showcase of my development work, from database systems to web and mobile applications
+          </p>
+        </div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <Card
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {projects.slice(0, visibleProjects).map((project, index) => (
+            <motion.div
               key={project.id}
-              className="overflow-hidden relative rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-md hover:shadow-2xl transition duration-500 group"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03 }}
             >
-              {/* Image */}
-              <div className="aspect-video overflow-hidden rounded-t-3xl bg-muted">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <Card className="flex flex-col h-full overflow-hidden rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-md hover:shadow-2xl transition duration-500 group">
+                {/* Image */}
+                <div className="aspect-video overflow-hidden rounded-t-3xl bg-muted">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
 
-              {/* Project Info */}
-              <div className="p-6 space-y-4">
-                <div>
-                  <Badge
-                    variant="outline"
-                    className="mb-3 px-3 py-1 rounded-full text-sm text-primary border border-primary/30"
-                  >
+                {/* Project Info */}
+                <CardHeader className="p-6 flex-grow">
+                  <Badge variant="outline" className="mb-3 px-3 py-1 rounded-full text-sm text-primary border border-primary/30">
                     {project.type}
                   </Badge>
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
-                </div>
+                  <CardTitle className="text-xl font-semibold mb-2">{project.title}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {project.technologies.map((tech, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="text-xs font-mono bg-primary/10 border border-primary/20 rounded-full px-2 py-1"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+                <CardContent className="px-6 py-2">
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, index) => (
+                      <Badge key={index} variant="secondary" className="text-xs font-mono bg-primary/10 border border-primary/20 rounded-full px-2 py-1">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
 
-              {/* Gradient accent overlay */}
-              <div className="absolute -top-4 -right-4 w-14 h-14 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 pointer-events-none"></div>
-            </Card>
+                {/* Buttons */}
+                <CardFooter className="px-6 py-4 flex gap-2 flex-wrap">
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
+                  >
+                    <Github className="w-4 h-4 mr-2" />
+                    Code
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Demo
+                  </Button>
+                </CardFooter>
+
+                {/* Gradient accent overlay */}
+                <div className="absolute -top-4 -right-4 w-14 h-14 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 pointer-events-none"></div>
+              </Card>
+            </motion.div>
           ))}
+        </div>
+
+        {/* More / Show Less */}
+        <div className="text-center mt-12">
+          {visibleProjects < projects.length ? (
+            <Button
+              onClick={loadMoreProjects}
+              size="lg"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
+            >
+              More Projects
+            </Button>
+          ) : (
+            <Button
+              onClick={showLessProjects}
+              size="lg"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
+            >
+              Show Less
+            </Button>
+          )}
         </div>
       </div>
     </section>

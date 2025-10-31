@@ -11,14 +11,15 @@ import {
   Layout,
   Smartphone
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const technicalSkills = [
-  { name: "HTML/CSS", icon: Layout, category: "Frontend" },
-  { name: "JavaScript", icon: Code2, category: "Programming" },
-  { name: "PHP", icon: Code2, category: "Backend" },
-  { name: "MySQL", icon: Database, category: "Database" },
-  { name: "Flutter", icon: Smartphone, category: "Mobile" },
-  { name: "Firebase", icon: Database, category: "Cloud" },
+  { name: "HTML/CSS", icon: Layout, category: "Frontend", level: 90 },
+  { name: "JavaScript", icon: Code2, category: "Programming", level: 85 },
+  { name: "PHP", icon: Code2, category: "Backend", level: 80 },
+  { name: "MySQL", icon: Database, category: "Database", level: 75 },
+  { name: "Flutter", icon: Smartphone, category: "Mobile", level: 70 },
+  { name: "Firebase", icon: Database, category: "Cloud", level: 65 },
 ];
 
 const softSkills = [
@@ -54,7 +55,7 @@ export default function Skills() {
                     key={index}
                     className="p-5 rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl transition duration-500 hover:scale-[1.03]"
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 mb-4">
                       <div className="p-3 rounded-lg bg-primary/10">
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
@@ -62,6 +63,17 @@ export default function Skills() {
                         <p className="font-semibold">{skill.name}</p>
                         <p className="text-xs text-muted-foreground">{skill.category}</p>
                       </div>
+                    </div>
+
+                    {/* Animated Progress Bar */}
+                    <div className="w-full h-3 bg-primary/10 rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                        viewport={{ once: true }}
+                      />
                     </div>
                   </Card>
                 );

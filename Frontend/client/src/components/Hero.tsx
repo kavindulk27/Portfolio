@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ArrowRight,
   Download,
@@ -5,17 +6,32 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  Check,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import profileImage from "@assets/generated_images/WhatsApp Image 2025-10-03 at 09.06.23_f57b9b98.jpg";
 
 export default function Hero() {
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [isDownloaded, setIsDownloaded] = useState(false);
+
   const handleDownloadCV = () => {
+    setIsDownloading(true);
+
     const link = document.createElement("a");
     link.href = "/attached_assets/K.L Kumanayaka CV  (1)_1759290916564.pdf";
     link.download = "Kavindu_Kumanayaka_CV.pdf";
     link.click();
+
+    // Show checkmark after 1.2s
+    setTimeout(() => {
+      setIsDownloading(false);
+      setIsDownloaded(true);
+    }, 1200);
+
+    // Reset after 3s
+    setTimeout(() => setIsDownloaded(false), 3000);
   };
 
   const scrollToProjects = () => {
@@ -48,7 +64,7 @@ export default function Hero() {
           Kavindu Kumanayaka
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground font-medium">
-          Software Developer 
+          Software Developer
         </p>
       </div>
 
@@ -103,7 +119,7 @@ export default function Hero() {
       <div className="flex flex-col md:flex-row gap-4 justify-center mt-10">
         <Button
           size="lg"
-          className="bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 rounded-full"
+          className="bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 rounded-full flex items-center gap-2 justify-center"
           onClick={scrollToProjects}
         >
           View Projects
@@ -114,10 +130,19 @@ export default function Hero() {
           variant="outline"
           size="lg"
           onClick={handleDownloadCV}
-          className="border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
+          className="border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 rounded-full flex items-center justify-center gap-2"
         >
-          <Download className="mr-2 h-4 w-4" />
-          Download CV
+          {isDownloaded ? (
+            <>
+              <Check className="h-4 w-4 text-green-500 animate-bounce" />
+              Downloaded
+            </>
+          ) : (
+            <>
+              <Download className={`h-4 w-4 ${isDownloading ? "animate-spin" : ""}`} />
+              {isDownloading ? "Downloading..." : "Download CV"}
+            </>
+          )}
         </Button>
       </div>
 

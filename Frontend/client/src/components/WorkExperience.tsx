@@ -9,12 +9,12 @@ const experiences = [
     duration: "Sep 2025 - Mar 2026",
     description: "Worked on React-based web applications, improving Fullstack and optimizing performance.",
   },
-  {
+ /* {
     role: "IT Support Assistant",
     company: "SLIATE Labuduwa",
     duration: "Jul 2024 - Dec 2024",
     description: "Provided IT support, maintained systems, and assisted with software deployment.",
-  },
+  },*/
 ];
 
 export default function WorkExperience() {
