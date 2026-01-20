@@ -50,7 +50,7 @@ export default function Contact() {
     { icon: Phone, label: "Phone", value: "0773490598", href: "tel:0773490598" },
     { icon: MapPin, label: "Location", value: "Akurugoda, Kamburupitiya, Sri Lanka", href: null },
     { icon: Github, label: "GitHub", value: "github.com/kavindulk27", href: "https://github.com/kavindulk27" },
-    { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/kavindu-lakshan", href: "https://linkedin.com/in/kavindu-lakshan-485427370" },
+    { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/kavindu-lakshan", href: "https://www.linkedin.com/in/kavindu-kumanayaka" },
   ];
 
   return (

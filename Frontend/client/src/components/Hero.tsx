@@ -20,8 +20,8 @@ export default function Hero() {
     setIsDownloading(true);
 
     const link = document.createElement("a");
-    link.href = "/attached_assets/K.L Kumanayaka CV  (1)_1759290916564.pdf";
-    link.download = "Kavindu_Kumanayaka_CV.pdf";
+    link.href = "/Kavindu-Kumanayaka-FlowCV-Resume-20260120.pdf";
+    link.download = "Kavindu-Kumanayaka-FlowCV-Resume-20260120.pdf";
     link.click();
 
     // Show checkmark after 1.2s
@@ -105,7 +105,7 @@ export default function Hero() {
           className="group border-border hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
         >
           <a
-            href="https://linkedin.com/in/kavindu-lakshan-485427370"
+            href="https://www.linkedin.com/in/kavindu-kumanayaka"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -150,8 +150,8 @@ export default function Hero() {
       <div className="max-w-3xl mt-12 space-y-4">
         <h2 className="text-lg font-semibold text-foreground">Professional Summary</h2>
         <p className="text-muted-foreground text-[15px] leading-relaxed">
-          Passionate and detail-oriented <b>Information Technology undergraduate</b> pursuing HNDIT at SLIATE Labuduwa. 
-          A fast learner with a creative mindset and strong problem-solving skills, eager to apply academic knowledge 
+          Passionate and detail-oriented <b>Information Technology undergraduate</b> pursuing HNDIT at SLIATE Labuduwa.
+          A fast learner with a creative mindset and strong problem-solving skills, eager to apply academic knowledge
           to real-world software development challenges and deliver impactful, user-centered digital solutions.
         </p>
       </div>
