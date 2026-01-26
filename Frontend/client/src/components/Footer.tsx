@@ -48,7 +48,7 @@ export default function Footer() {
               className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105"
             >
               <a
-                href="https://linkedin.com/in/kavindu-lakshan-485427370"
+                href="https://www.linkedin.com/in/kavindu-kumanayaka"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
