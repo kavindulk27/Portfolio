@@ -1,115 +1,106 @@
-import { Card } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
-import { 
-  Code2, 
-  Users, 
-  Clock, 
-  Lightbulb, 
-  MessageSquare, 
-  Target,
-  Database,
-  Layout,
-  Smartphone
-} from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  Code2,
+  Database,
+  Globe,
+  Layers,
+  Server,
+  Smartphone,
+  Users,
+  Clock,
+  MessageSquare,
+  Lightbulb,
+} from "lucide-react";
+import { Badge } from "../components/ui/badge";
 
 const technicalSkills = [
-  { name: "HTML/CSS", icon: Layout, category: "Frontend", level: 90 },
-  { name: "JavaScript", icon: Code2, category: "Programming", level: 85 },
-  { name: "PHP", icon: Code2, category: "Backend", level: 80 },
-  { name: "MySQL", icon: Database, category: "Database", level: 75 },
-  { name: "Flutter", icon: Smartphone, category: "Mobile", level: 70 },
-  { name: "Firebase", icon: Database, category: "Cloud", level: 65 },
+  { name: "React UI Engineering", icon: Globe, level: 88 },
+  { name: "JavaScript / TypeScript", icon: Code2, level: 86 },
+  { name: "Node / API Development", icon: Server, level: 80 },
+  { name: "MySQL / SQL Design", icon: Database, level: 78 },
+  { name: "PHP Backend Logic", icon: Layers, level: 82 },
+  { name: "Flutter App Building", icon: Smartphone, level: 72 },
 ];
 
-const softSkills = [
-  { name: "Project Management", icon: Target },
-  { name: "Teamwork", icon: Users },
+const collaborationSkills = [
+  { name: "Team Collaboration", icon: Users },
   { name: "Time Management", icon: Clock },
-  { name: "Critical Thinking", icon: Lightbulb },
-  { name: "Effective Communication", icon: MessageSquare },
-  { name: "Leadership", icon: Users },
+  { name: "Communication", icon: MessageSquare },
+  { name: "Problem Solving", icon: Lightbulb },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 bg-muted/10">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
-          Skills & Expertise
-        </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          A combination of technical proficiency and essential soft skills
-        </p>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Technical Skills */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold mb-4">Technical Skills</h3>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {technicalSkills.map((skill, index) => {
-                const Icon = skill.icon;
-                return (
-                  <Card
-                    key={index}
-                    className="p-5 rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl transition duration-500 hover:scale-[1.03]"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-semibold">{skill.name}</p>
-                        <p className="text-xs text-muted-foreground">{skill.category}</p>
-                      </div>
-                    </div>
-
-                    {/* Animated Progress Bar */}
-                    <div className="w-full h-3 bg-primary/10 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
-                        viewport={{ once: true }}
-                      />
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
+    <section className="section-wrap overflow-hidden">
+      <div className="orb float-animation-delayed right-[-90px] top-10 h-64 w-64 bg-chart-3/20" />
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <Badge className="mb-3 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-primary">
+              Skills
+            </Badge>
+            <h2 className="text-3xl font-bold md:text-5xl">Tech stack and execution strengths</h2>
           </div>
-
-          {/* Soft Skills */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold mb-4">Soft Skills</h3>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {softSkills.map((skill, index) => {
-                const Icon = skill.icon;
-                return (
-                  <Card
-                    key={index}
-                    className="p-5 rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl transition duration-500 hover:scale-[1.03]"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-chart-2/10">
-                        <Icon className="h-6 w-6 text-chart-2" />
-                      </div>
-                      <p className="font-semibold">{skill.name}</p>
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
+          <p className="max-w-xl text-sm text-muted-foreground md:text-base">
+            Balanced across UI architecture, backend implementation, and practical collaboration in software teams.
+          </p>
         </div>
 
-        {/* Optional Badge at bottom */}
-        <div className="mt-12 text-center">
-          <Badge variant="secondary" className="text-sm px-4 py-2">
-            Public Relations
-          </Badge>
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {technicalSkills.map((skill, index) => {
+              const Icon = skill.icon;
+              return (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: index * 0.06 }}
+                  whileHover={{ y: -5, rotateX: 1, rotateY: -1 }}
+                  className="glass-panel rounded-3xl p-5"
+                >
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="rounded-xl border border-primary/20 bg-primary/10 p-2.5">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="text-sm font-semibold">{skill.name}</h3>
+                  </div>
+                  <div className="h-2.5 w-full overflow-hidden rounded-full bg-muted">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.9, ease: "easeOut" }}
+                      className="h-full rounded-full bg-gradient-to-r from-primary via-chart-3 to-accent"
+                    />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            whileHover={{ y: -4 }}
+            className="glass-panel rounded-3xl p-6"
+          >
+            <h3 className="mb-4 text-xl font-semibold">Professional capabilities</h3>
+            <div className="space-y-3">
+              {collaborationSkills.map((skill) => {
+                const Icon = skill.icon;
+                return (
+                  <div key={skill.name} className="flex items-center gap-3 rounded-2xl border border-border/70 p-3">
+                    <Icon className="h-4 w-4 text-accent" />
+                    <span className="text-sm text-muted-foreground">{skill.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -42,36 +42,36 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground scroll-smooth">
-      {/* Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-xl border-b border-border shadow-sm transition-all duration-300">
-        <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text tracking-wide select-none">
-            Kavindu LK
-          </h1>
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/70 backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-2.5">
+          <a href="#hero" className="text-lg font-bold md:text-xl">
+            <span className="gradient-text">Kavindu Kumanayaka</span>
+          </a>
 
-          <nav className="hidden md:flex items-center space-x-8 relative">
+          <nav className="relative hidden items-center space-x-8 md:flex">
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`relative pb-1 transition-all duration-300 hover:text-primary ${
-                  activeSection === item.id ? "text-primary font-semibold" : "text-muted-foreground"
+                className={`relative pb-1 text-sm transition-colors duration-300 hover:text-foreground ${
+                  activeSection === item.id ? "text-foreground font-semibold" : "text-muted-foreground"
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute left-0 bottom-0 h-[2px] w-full bg-primary rounded-full transition-all duration-300"></span>
+                  <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-primary transition-all duration-300" />
                 )}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <ThemeToggle />
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 rounded-lg hover:bg-accent/30 transition"
+              className="rounded-xl border border-border/60 p-2 transition hover:bg-muted/70 md:hidden"
+              aria-label="Toggle menu"
             >
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -79,14 +79,14 @@ export default function Home() {
         </div>
 
         {menuOpen && (
-          <nav className="md:hidden bg-background/95 backdrop-blur-md border-t border-border shadow-md animate-slideDown">
-            <div className="flex flex-col px-6 py-4 space-y-4">
+          <nav className="border-t border-border/60 bg-background/95 backdrop-blur md:hidden">
+            <div className="flex flex-col space-y-4 px-6 py-4">
               {navItems.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className={`transition-all hover:text-primary ${
-                    activeSection === item.id ? "text-primary font-medium" : ""
+                  className={`text-sm transition-colors hover:text-foreground ${
+                    activeSection === item.id ? "text-foreground font-medium" : "text-muted-foreground"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -98,13 +98,12 @@ export default function Home() {
         )}
       </header>
 
-      {/* Main Content */}
-      <main className="pt-20 md:pt-24 scroll-smooth">
+      <main className="pt-12 md:pt-14">
         <section id="hero"><Hero /></section>
         <section id="about"><About /></section>
         <section id="skills"><Skills /></section>
         <section id="projects"><Projects /></section>
-        <section id="experience"><WorkExperience /></section> {/* New Section */}
+        <section id="experience"><WorkExperience /></section>
         <section id="education"><Education /></section>
         <section id="contact"><Contact /></section>
       </main>

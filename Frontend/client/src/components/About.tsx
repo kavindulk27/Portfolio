@@ -1,80 +1,75 @@
-import { GraduationCap, Code, FolderGit2 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Badge } from "../components/ui/badge";
+import { Layers, GitBranch, Braces, ShieldCheck } from "lucide-react";
+
+const highlights = [
+  {
+    icon: Layers,
+    title: "Product Thinking",
+    text: "I design solutions around user workflows and measurable impact, not just code output.",
+  },
+  {
+    icon: GitBranch,
+    title: "Clean Delivery",
+    text: "I build maintainable features with clear Git workflows, documentation, and test-ready code.",
+  },
+  {
+    icon: Braces,
+    title: "Full Stack Scope",
+    text: "Frontend UI, API integrations, backend logic, and data modeling are all part of my workflow.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Reliable Engineering",
+    text: "I focus on performance, scalability, and practical security in day-to-day implementation.",
+  },
+];
 
 export default function About() {
   return (
-    <section id="about" className="relatipx-6 bg-gradient-to-b from-background via-background to-muted/10 overflow-hidden">
-      {/* Subtle floating gradients */}
-      <div className="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-blue-500/20 blur-3xl animate-pulse"></div>
-      <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-pink-500/10 blur-3xl animate-pulse"></div>
+    <section className="section-wrap overflow-hidden pt-0 -mt-4 md:-mt-6">
+      <div className="orb float-animation -left-24 top-10 h-64 w-64 bg-primary/20" />
+      <div className="ai-scanlines" />
+      <div className="mx-auto w-full max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 max-w-3xl"
+        >
+          <Badge className="mb-4 rounded-full border border-accent/30 bg-accent/10 px-4 py-1 text-accent">
+            About
+          </Badge>
+          <h2 className="mb-4 text-3xl font-bold md:text-5xl">
+            Engineering mindset for modern <span className="gradient-text">web platforms</span>
+          </h2>
+          <p className="text-muted-foreground">
+            I am currently pursuing HNDIT at SLIATE Labuduwa and focusing on production-quality software
+            development. My goal is to contribute to teams building resilient web products with strong UX,
+            dependable APIs, and scalable databases.
+          </p>
+        </motion.div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
-          About Me
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Profile */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">Professional Profile</h3>
-            <p className="text-muted-foreground leading-relaxed text-[15px]">
-              I'm currently pursuing a Higher National Diploma in Information Technology at SLIATE Labuduwa. 
-              My passion lies in creating efficient digital solutions that solve real-world problems. 
-              With a strong foundation in web development and mobile applications, I'm eager to contribute 
-              to innovative projects and grow as a professional developer.
-            </p>
-            <div className="flex gap-3">
-              <Badge variant="secondary" className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary border border-primary/20">
-                English
-              </Badge>
-              <Badge variant="secondary" className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary border border-primary/20">
-                Sinhala
-              </Badge>
-            </div>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid gap-6">
-            <div className="relative p-6 rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl transition duration-500">
-              <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 animate-pulse"></div>
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-primary/10">
-                  <GraduationCap className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Education</h4>
-                  <p className="text-sm text-muted-foreground">HNDIT at SLIATE Galle</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative p-6 rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl transition duration-500">
-              <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 animate-pulse"></div>
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-chart-2/10">
-                  <FolderGit2 className="h-6 w-6 text-chart-2" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Projects Completed</h4>
-                  <p className="text-sm text-muted-foreground">3 Major Projects</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative p-6 rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl transition duration-500">
-              <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 animate-pulse"></div>
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-chart-3/10">
-                  <Code className="h-6 w-6 text-chart-3" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Tech Skills</h4>
-                  <p className="text-sm text-muted-foreground">Full-Stack Development</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          {highlights.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -6, rotateX: 1.2, rotateY: -1.2 }}
+                className="glass-panel rounded-3xl p-6"
+              >
+                <Icon className="mb-4 h-6 w-6 text-primary" />
+                <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

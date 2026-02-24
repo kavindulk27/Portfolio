@@ -1,82 +1,50 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Footer() {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-background via-muted/20 to-background border-t border-border/40 backdrop-blur-xl">
-      {/* Decorative glows - smaller & subtler */}
-      <div className="absolute -top-10 left-0 w-60 h-60 bg-blue-500/10 blur-2xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-60 h-60 bg-purple-500/10 blur-2xl rounded-full" />
+    <footer className="relative overflow-hidden border-t border-border/60 bg-background/70">
+      <div className="ai-scanlines" />
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 md:flex-row">
+        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h3 className="text-lg font-bold">
+            <span className="gradient-text">Kavindu Kumanayaka</span>
+          </h3>
+          <p className="text-xs text-muted-foreground">Full Stack Software Engineer</p>
+        </motion.div>
 
-      <div className="relative max-w-6xl mx-auto px-6 py-6 text-center md:text-left">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Branding */}
-          <div>
-            <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Kavindu Kumanayaka
-            </h3>
-            <p className="text-xs text-muted-foreground mt-1">
-              Software Developer · HNDIT Student
-            </p>
-          </div>
-
-          {/* Social buttons */}
-          <div className="flex gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              asChild
-              className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105"
+        <motion.div
+          className="flex gap-2"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.06 }}
+        >
+          <Button variant="ghost" size="icon" asChild className="rounded-full border border-border/70 transition-transform hover:-translate-y-1">
+            <a href="https://github.com/kavindulk27" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Github className="h-4 w-4" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="rounded-full border border-border/70 transition-transform hover:-translate-y-1">
+            <a
+              href="https://www.linkedin.com/in/kavindu-kumanayaka"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
             >
-              <a
-                href="https://github.com/kavindulk27"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              asChild
-              className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105"
-            >
-              <a
-                href="https://www.linkedin.com/in/kavindu-kumanayaka"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              asChild
-              className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105"
-            >
-              <a href="mailto:kavindukumanayaka@gmail.com" aria-label="Email">
-                <Mail className="h-4 w-4" />
-              </a>
-            </Button>
-          </div>
-        </div>
-
-        {/* Bottom line */}
-        <div className="mt-6 pt-4 border-t border-border/40 text-center text-xs text-muted-foreground">
-          <p>
-            © {new Date().getFullYear()}{" "}
-            <span className="font-medium text-foreground">Kavindu Kumanayaka</span> — All rights
-            reserved.
-          </p>
-        </div>
+              <Linkedin className="h-4 w-4" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="rounded-full border border-border/70 transition-transform hover:-translate-y-1">
+            <a href="mailto:kavindukumanayaka@gmail.com" aria-label="Email">
+              <Mail className="h-4 w-4" />
+            </a>
+          </Button>
+        </motion.div>
+      </div>
+      <div className="border-t border-border/50 py-4 text-center text-xs text-muted-foreground">
+        Copyright {new Date().getFullYear()} Kavindu Kumanayaka. All rights reserved.
       </div>
     </footer>
   );

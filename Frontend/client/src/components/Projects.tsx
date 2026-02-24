@@ -2,165 +2,193 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
-import { ExternalLink, Github, Code, Cpu, Rocket } from "lucide-react";
-import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
-import restaurantImage from '@assets/generated_images/Restaurant_DBMS_interface_screenshot_e86a32b0.png';
-import studentImage from '@assets/generated_images/Student_management_app_mockup_7b7c2c9a.png';
-import tourismImage from '@assets/generated_images/Tourism_website_mockup_screenshot_b8978a4a.png';
+import restaurantImage from "@assets/generated_images/Restaurant_DBMS_interface_screenshot_e86a32b0.png";
+import studentImage from "@assets/generated_images/Student_management_app_mockup_7b7c2c9a.png";
+import tourismImage from "@assets/generated_images/Tourism_website_mockup_screenshot_b8978a4a.png";
+import aiConceptImage from "@assets/generated_images/ChatGPT Image Oct 31, 2025, 11_07_35 AM.png";
 
 const projects = [
   {
     id: 1,
     title: "Restaurant Database Management System",
     type: "Individual Project",
-    description: "RDMS streamlines restaurant operations by automating food orders, inventory, billing, and reservations.",
+    description:
+      "A full-stack management system that automates ordering, billing, reservations, and inventory flow.",
     technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     image: restaurantImage,
   },
   {
     id: 2,
-    title: "Student Management System",
+    title: "Student Management Platform",
     type: "Group Project",
-    description: "Cross-platform Student System using Flutter & Firebase for real-time data, attendance, grades, and reports.",
+    description:
+      "Cross-platform system with Flutter and Firebase for attendance, grading, and live academic data updates.",
     technologies: ["Flutter", "Firebase"],
     image: studentImage,
   },
   {
     id: 3,
-    title: "Tourism & Travel Website",
+    title: "Tourism and Travel Website",
     type: "Individual Project",
-    description: "This website helps tourists find beautiful places in Sri Lanka and provides information about hotels nearby.",
+    description:
+      "Responsive tourism site that helps visitors explore locations, discover nearby hotels, and plan travel.",
     technologies: ["HTML", "CSS"],
     image: tourismImage,
+  },
+  {
+    id: 4,
+    title: "AI Portfolio Concept UI",
+    type: "Design Concept",
+    description:
+      "A modern AI-inspired portfolio interface concept focused on visual depth, motion design, and clear content flow.",
+    technologies: ["UI Design", "Animation", "Modern Web"],
+    image: aiConceptImage,
   },
 ];
 
 export default function Projects() {
-  const [visibleProjects, setVisibleProjects] = useState(3);
-  const floatingIcons = [Code, Cpu, Rocket];
-
-  const loadMoreProjects = () => setVisibleProjects(projects.length);
-  const showLessProjects = () => setVisibleProjects(3);
+  const [showAll, setShowAll] = useState(false);
+  const baseProjects = projects.slice(0, 3);
+  const extraProjects = projects.slice(3);
 
   return (
-    <section
-      id="projects"
-      className="relative py-16 overflow-hidden bg-gradient-to-b from-background/50 via-muted/20 to-background/80"
-    >
-      {/* Floating Background Icons */}
-      {floatingIcons.map((Icon, i) => (
-        <div
-          key={i}
-          className="absolute text-primary/10"
-          style={{
-            top: `${10 + i * 35}%`,
-            left: `${5 + i * 35}%`,
-            fontSize: 64,
-          }}
-        >
-          <Icon />
-        </div>
-      ))}
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
-            Featured Projects
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            💻 A showcase of my development work, from database systems to web and mobile applications
+    <section className="section-wrap overflow-hidden">
+      <div className="orb float-animation -left-28 top-10 h-72 w-72 bg-chart-3/20" />
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="mb-12">
+          <Badge className="mb-3 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-primary">
+            Projects
+          </Badge>
+          <h2 className="mb-3 text-3xl font-bold md:text-5xl">Selected engineering work</h2>
+          <p className="max-w-2xl text-muted-foreground">
+            Projects focused on practical product usage, data flow management, and maintainable implementation.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {projects.slice(0, visibleProjects).map((project, index) => (
+        <div className="grid justify-items-center gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {baseProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.03 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              whileHover={{ y: -6 }}
             >
-              <Card className="flex flex-col h-full overflow-hidden rounded-3xl bg-background/50 backdrop-blur-xl border border-border/30 shadow-md hover:shadow-2xl transition duration-500 group">
-                {/* Image */}
-                <div className="aspect-video overflow-hidden rounded-t-3xl bg-muted">
+              <Card className="glass-panel flex h-full w-full max-w-[340px] flex-col overflow-hidden rounded-[1.4rem] border-border/60">
+                <div className="h-40 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
-
-                {/* Project Info */}
-                <CardHeader className="p-6 flex-grow">
-                  <Badge variant="outline" className="mb-3 px-3 py-1 rounded-full text-sm text-primary border border-primary/30">
+                <CardHeader className="px-4 pb-1 pt-4">
+                  <Badge
+                    variant="outline"
+                    className="mb-2 w-fit rounded-full border-primary/35 px-2 py-0.5 text-[11px] text-primary"
+                  >
                     {project.type}
                   </Badge>
-                  <CardTitle className="text-xl font-semibold mb-2">{project.title}</CardTitle>
-                  <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                  <CardTitle className="text-lg leading-snug">{project.title}</CardTitle>
+                  <CardDescription className="pt-1 text-sm leading-relaxed text-muted-foreground">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-
-                {/* Technologies */}
-                <CardContent className="px-6 py-2">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs font-mono bg-primary/10 border border-primary/20 rounded-full px-2 py-1">
+                <CardContent className="grow px-4 pb-3 pt-1">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="rounded-full bg-muted/80 px-2 py-0.5 text-[11px]">
                         {tech}
                       </Badge>
                     ))}
                   </div>
                 </CardContent>
-
-                {/* Buttons */}
-                <CardFooter className="px-6 py-4 flex gap-2 flex-wrap">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
+                <CardFooter className="mt-auto gap-2 px-4 pb-4 pt-0">
+                  <Button size="sm" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
+                    <Github className="mr-1 h-3.5 w-3.5 shrink-0" />
                     Code
                   </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
+                  <Button size="sm" variant="outline" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
+                    <ExternalLink className="mr-1 h-3.5 w-3.5 shrink-0" />
                     Demo
                   </Button>
                 </CardFooter>
-
-                {/* Gradient accent overlay */}
-                <div className="absolute -top-4 -right-4 w-14 h-14 rounded-full bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-20 pointer-events-none"></div>
               </Card>
             </motion.div>
           ))}
+          <AnimatePresence>
+            {showAll &&
+              extraProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 26, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 18, scale: 0.94 }}
+                  transition={{ duration: 0.35, delay: index * 0.08 }}
+                  whileHover={{ y: -6 }}
+                >
+                  <Card className="glass-panel flex h-full w-full max-w-[340px] flex-col overflow-hidden rounded-[1.4rem] border-border/60">
+                    <div className="h-40 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                    <CardHeader className="px-4 pb-1 pt-4">
+                      <Badge
+                        variant="outline"
+                        className="mb-2 w-fit rounded-full border-primary/35 px-2 py-0.5 text-[11px] text-primary"
+                      >
+                        {project.type}
+                      </Badge>
+                      <CardTitle className="text-lg leading-snug">{project.title}</CardTitle>
+                      <CardDescription className="pt-1 text-sm leading-relaxed text-muted-foreground">
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="grow px-4 pb-3 pt-1">
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.map((tech) => (
+                          <Badge key={tech} variant="secondary" className="rounded-full bg-muted/80 px-2 py-0.5 text-[11px]">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                    <CardFooter className="mt-auto gap-2 px-4 pb-4 pt-0">
+                      <Button size="sm" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
+                        <Github className="mr-1 h-3.5 w-3.5 shrink-0" />
+                        Code
+                      </Button>
+                      <Button size="sm" variant="outline" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
+                        <ExternalLink className="mr-1 h-3.5 w-3.5 shrink-0" />
+                        Demo
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              ))}
+          </AnimatePresence>
         </div>
 
-        {/* More / Show Less */}
-        <div className="text-center mt-12">
-          {visibleProjects < projects.length ? (
-            <Button
-              onClick={loadMoreProjects}
-              size="lg"
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
-            >
-              More Projects
-            </Button>
-          ) : (
-            <Button
-              onClick={showLessProjects}
-              size="lg"
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300"
-            >
-              Show Less
-            </Button>
-          )}
-        </div>
+        {projects.length > 3 && (
+          <div className="mt-8 flex justify-center">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.96 }}>
+              <Button
+                variant="outline"
+                className="rounded-full border-primary/35 px-6 shadow-[0_0_0_rgba(0,0,0,0)] transition-shadow hover:shadow-[0_0_28px_hsl(var(--primary)/0.3)]"
+                onClick={() => setShowAll((prev) => !prev)}
+              >
+                {showAll ? "Show Less" : "More Projects"}
+              </Button>
+            </motion.div>
+          </div>
+        )}
       </div>
     </section>
   );
