@@ -125,10 +125,10 @@ export default function Hero() {
         transition={{ duration: 0.35, ease: "easeOut" }}
         className="relative z-10 mb-2 mt-6 flex md:hidden"
       >
-        <Badge className="rounded-full border border-emerald-700/45 bg-emerald-600/20 px-4 py-2 text-sm text-emerald-900 shadow-[0_0_16px_rgba(16,185,129,0.2)] dark:border-emerald-400/40 dark:bg-emerald-500/10 dark:text-emerald-300 dark:shadow-[0_0_22px_rgba(52,211,153,0.25)]">
+        <Badge className="rounded-full border border-emerald-700/45 bg-emerald-600/20 px-3 py-1.5 text-xs text-emerald-900 shadow-[0_0_12px_rgba(16,185,129,0.16)] dark:border-emerald-400/40 dark:bg-emerald-500/10 dark:text-emerald-300 dark:shadow-[0_0_18px_rgba(52,211,153,0.2)]">
           <span className="relative mr-2 inline-flex items-center">
-            <span className="absolute h-2.5 w-2.5 rounded-full bg-emerald-500/60 animate-ping dark:bg-emerald-400/50" />
-            <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-700 dark:bg-emerald-300" />
+            <span className="absolute h-2 w-2 rounded-full bg-emerald-500/60 animate-ping dark:bg-emerald-400/50" />
+            <span className="relative h-2 w-2 rounded-full bg-emerald-700 dark:bg-emerald-300" />
           </span>
           Online
         </Badge>
