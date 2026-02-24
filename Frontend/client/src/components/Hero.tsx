@@ -99,7 +99,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="section-wrap overflow-hidden pt-4 pb-0 md:pt-6 md:pb-0">
+    <section className="relative overflow-hidden px-6 pt-2 pb-0 md:px-10 md:pt-3 md:pb-0">
       <div className="orb float-animation left-[-100px] top-12 h-72 w-72 bg-primary/25" />
       <div className="orb float-animation-delayed bottom-10 right-[-120px] h-80 w-80 bg-primary/20" />
       <div className="ai-grid" />
@@ -119,18 +119,33 @@ export default function Hero() {
         />
       ))}
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 [perspective:1200px] lg:grid-cols-[1.15fr_0.85fr]">
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="relative z-10 mb-2 mt-6 flex md:hidden"
+      >
+        <Badge className="rounded-full border border-emerald-700/45 bg-emerald-600/20 px-4 py-2 text-sm text-emerald-900 shadow-[0_0_16px_rgba(16,185,129,0.2)] dark:border-emerald-400/40 dark:bg-emerald-500/10 dark:text-emerald-300 dark:shadow-[0_0_22px_rgba(52,211,153,0.25)]">
+          <span className="relative mr-2 inline-flex items-center">
+            <span className="absolute h-2.5 w-2.5 rounded-full bg-emerald-500/60 animate-ping dark:bg-emerald-400/50" />
+            <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-700 dark:bg-emerald-300" />
+          </span>
+          Online
+        </Badge>
+      </motion.div>
+
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-3 [perspective:1200px] md:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
         <motion.div
-          className="space-y-8"
+          className="order-2 space-y-5 lg:order-1 lg:space-y-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants}>
-            <Badge className="rounded-full border border-emerald-700/45 bg-emerald-600/20 px-4 py-2 text-emerald-900 shadow-[0_0_18px_rgba(16,185,129,0.2)] dark:border-emerald-400/40 dark:bg-emerald-500/10 dark:text-emerald-300 dark:shadow-[0_0_24px_rgba(52,211,153,0.25)]">
+          <motion.div variants={itemVariants} className="flex items-center gap-3">
+            <Badge className="hidden rounded-full border border-emerald-700/45 bg-emerald-600/20 px-5 py-2.5 text-base text-emerald-900 shadow-[0_0_18px_rgba(16,185,129,0.2)] md:inline-flex dark:border-emerald-400/40 dark:bg-emerald-500/10 dark:text-emerald-300 dark:shadow-[0_0_24px_rgba(52,211,153,0.25)]">
               <span className="relative mr-2 inline-flex items-center">
-                <span className="absolute h-2.5 w-2.5 rounded-full bg-emerald-500/60 animate-ping dark:bg-emerald-400/50" />
-                <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-700 dark:bg-emerald-300" />
+                <span className="absolute h-3 w-3 rounded-full bg-emerald-500/60 animate-ping dark:bg-emerald-400/50" />
+                <span className="relative h-3 w-3 rounded-full bg-emerald-700 dark:bg-emerald-300" />
               </span>
               Online
             </Badge>
@@ -211,7 +226,7 @@ export default function Hero() {
             rotateX: { duration: 6, repeat: Infinity, ease: "easeInOut" },
             rotateY: { duration: 6, repeat: Infinity, ease: "easeInOut" },
           }}
-          className="ai-holo relative rounded-[2rem] border border-border/70 bg-card/55 p-6 shadow-2xl backdrop-blur-xl [transform-style:preserve-3d] md:p-8"
+          className="ai-holo relative order-1 mx-auto w-full max-w-[280px] rounded-[1.2rem] border border-border/70 bg-card/55 p-3 shadow-2xl backdrop-blur-xl [transform-style:preserve-3d] md:max-w-xl md:rounded-[2rem] md:p-8 lg:order-2"
         >
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-[2rem] border border-primary/20"
@@ -220,23 +235,23 @@ export default function Hero() {
           />
 
           <motion.div
-            className="relative mx-auto mb-8 h-44 w-44 overflow-hidden rounded-3xl border border-border/70 bg-background/40 shadow-xl"
+            className="relative mx-auto mb-3 h-24 w-24 overflow-hidden rounded-xl border border-border/70 bg-background/40 shadow-xl md:mb-8 md:h-44 md:w-44 md:rounded-3xl"
             animate={{ scale: [1, 1.03, 1], y: [0, -3, 0] }}
             transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
           >
             <img src={profileImage} alt="Kavindu Kumanayaka" className="h-full w-full object-cover" />
           </motion.div>
 
-          <h2 className="text-center text-2xl font-bold">Kavindu Kumanayaka</h2>
-          <p className="mt-1 text-center text-sm text-muted-foreground">Engineer profile snapshot</p>
+          <h2 className="text-center text-base font-bold md:text-2xl">Kavindu Kumanayaka</h2>
+          <p className="mt-0.5 text-center text-[11px] text-muted-foreground md:mt-1 md:text-sm">Engineer profile snapshot</p>
 
-          <div className="mt-7 grid grid-cols-2 gap-3">
+          <div className="mt-3 grid grid-cols-2 gap-1.5 md:mt-7 md:gap-3">
             {stack.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="rounded-2xl border border-border/70 bg-background/60 p-3">
-                  <Icon className="mb-2 h-4 w-4 text-primary" />
-                  <p className="text-xs font-medium text-muted-foreground">{item.label}</p>
+                <div key={item.label} className="rounded-lg border border-border/70 bg-background/60 p-1.5 md:rounded-2xl md:p-3">
+                  <Icon className="mb-0.5 h-3 w-3 text-primary md:mb-2 md:h-4 md:w-4" />
+                  <p className="text-[10px] font-medium text-muted-foreground md:text-xs">{item.label}</p>
                 </div>
               );
             })}

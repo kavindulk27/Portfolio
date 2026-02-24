@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/70 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-2.5">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3 md:py-3.5">
           <a href="#hero" className="text-lg font-bold md:text-xl">
             <span className="gradient-text">Kavindu Kumanayaka</span>
           </a>
@@ -98,7 +98,7 @@ export default function Home() {
         )}
       </header>
 
-      <main className="pt-12 md:pt-14">
+      <main className="pt-12 md:pt-16">
         <section id="hero"><Hero /></section>
         <section id="about"><About /></section>
         <section id="skills"><Skills /></section>
