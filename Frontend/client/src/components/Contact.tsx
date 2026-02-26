@@ -47,7 +47,7 @@ export default function Contact() {
   const contactInfo = [
     { icon: Mail, label: "Email", value: "kavindukumanayaka@gmail.com", href: "mailto:kavindukumanayaka@gmail.com" },
     { icon: Phone, label: "Phone", value: "0773490598", href: "tel:0773490598" },
-    { icon: MapPin, label: "Location", value: "Akurugoda, Kamburupitiya, Sri Lanka", href: null },
+    { icon: MapPin, label: "Location", value: "Udaya, Kahagala South, Akurugoda, Kamburupitiya, Sri Lanka", href: null },
     { icon: Github, label: "GitHub", value: "github.com/kavindulk27", href: "https://github.com/kavindulk27" },
     {
       icon: Linkedin,

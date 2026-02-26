@@ -5,10 +5,11 @@ import { Button } from "../components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import restaurantImage from "@assets/generated_images/Restaurant_DBMS_interface_screenshot_e86a32b0.png";
-import studentImage from "@assets/generated_images/Student_management_app_mockup_7b7c2c9a.png";
-import tourismImage from "@assets/generated_images/Tourism_website_mockup_screenshot_b8978a4a.png";
-import aiConceptImage from "@assets/generated_images/ChatGPT Image Oct 31, 2025, 11_07_35 AM.png";
+import restaurantPreview from "@assets/generated_images/restaurant_modern.jpg";
+import studentPreview from "@assets/generated_images/student_modern.jpg";
+import tourismPreview from "@assets/generated_images/food_center_modern.jpg";
+import aetiPreview from "@assets/generated_images/aeti_modern.jpg";
+
 
 const projects = [
   {
@@ -17,8 +18,10 @@ const projects = [
     type: "Individual Project",
     description:
       "A full-stack management system that automates ordering, billing, reservations, and inventory flow.",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    image: restaurantImage,
+    technologies: ["React", "TypeScript", "tailwindcss", "django", "sqlite"],
+    image: restaurantPreview,
+    githubUrl: "https://github.com/kavindulk27/Resturant-web",
+    demoUrl: "#",
   },
   {
     id: 2,
@@ -27,25 +30,30 @@ const projects = [
     description:
       "Cross-platform system with Flutter and Firebase for attendance, grading, and live academic data updates.",
     technologies: ["Flutter", "Firebase"],
-    image: studentImage,
+    image: studentPreview,
+    githubUrl: "https://github.com/kavindulk27/student-management-system",
+    demoUrl: "#",
   },
   {
     id: 3,
-    title: "Tourism and Travel Website",
+    title: "Kumanayaka Food Center Web",
     type: "Individual Project",
     description:
-      "Responsive tourism site that helps visitors explore locations, discover nearby hotels, and plan travel.",
-    technologies: ["HTML", "CSS"],
-    image: tourismImage,
+      "Responsive React web app for a food center, deployed on Vercel, highlighting interactive UI and modern frontend skills.",
+    technologies: ["react", "tailwindcss", "vercel"],
+    image: tourismPreview,
+    githubUrl: "https://github.com/kavindulk27/Food-Center",
+    demoUrl: "https://kumanayakafoodcenter.vercel.app",
   },
   {
     id: 4,
-    title: "AI Portfolio Concept UI",
-    type: "Design Concept",
+    title: "AETI website",
     description:
-      "A modern AI-inspired portfolio interface concept focused on visual depth, motion design, and clear content flow.",
-    technologies: ["UI Design", "Animation", "Modern Web"],
-    image: aiConceptImage,
+      "A modern, responsive web platform for the Automobile Engineering Training Institute (NAITA), showcasing courses and institutional details.",
+    technologies: ["react", "tailwindcss", "django", "postgres"],
+    image: aetiPreview,
+    githubUrl: "",
+    demoUrl: "https://aeti.naita.gov.lk/",
   },
 ];
 
@@ -108,14 +116,27 @@ export default function Projects() {
                   </div>
                 </CardContent>
                 <CardFooter className="mt-auto gap-2 px-4 pb-4 pt-0">
-                  <Button size="sm" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
-                    <Github className="mr-1 h-3.5 w-3.5 shrink-0" />
-                    Code
-                  </Button>
-                  <Button size="sm" variant="outline" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
-                    <ExternalLink className="mr-1 h-3.5 w-3.5 shrink-0" />
-                    Demo
-                  </Button>
+                  {project.githubUrl && (
+                    <Button
+                      size="sm"
+                      className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
+                      <Github className="mr-1 h-3.5 w-3.5 shrink-0" />
+                      Code
+                    </Button>
+                  )}
+                  {project.demoUrl && project.demoUrl !== "#" && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs"
+                      onClick={() => window.open(project.demoUrl, '_blank')}
+                    >
+                      <ExternalLink className="mr-1 h-3.5 w-3.5 shrink-0" />
+                      Demo
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
@@ -161,14 +182,27 @@ export default function Projects() {
                       </div>
                     </CardContent>
                     <CardFooter className="mt-auto gap-2 px-4 pb-4 pt-0">
-                      <Button size="sm" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
-                        <Github className="mr-1 h-3.5 w-3.5 shrink-0" />
-                        Code
-                      </Button>
-                      <Button size="sm" variant="outline" className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs">
-                        <ExternalLink className="mr-1 h-3.5 w-3.5 shrink-0" />
-                        Demo
-                      </Button>
+                      {project.githubUrl && (
+                        <Button
+                          size="sm"
+                          className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs"
+                          onClick={() => window.open(project.githubUrl, '_blank')}
+                        >
+                          <Github className="mr-1 h-3.5 w-3.5 shrink-0" />
+                          Code
+                        </Button>
+                      )}
+                      {project.demoUrl && project.demoUrl !== "#" && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="h-8 flex-1 whitespace-nowrap rounded-full px-2 text-xs"
+                          onClick={() => window.open(project.demoUrl, '_blank')}
+                        >
+                          <ExternalLink className="mr-1 h-3.5 w-3.5 shrink-0" />
+                          Demo
+                        </Button>
+                      )}
                     </CardFooter>
                   </Card>
                 </motion.div>
