@@ -5,7 +5,7 @@ import { Button } from "../components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import restaurantPreview from "@assets/generated_images/restaurant_modern.jpg";
+import restaurantPreview from "@assets/generated_images/FoodieDelight.png";
 import studentPreview from "@assets/generated_images/student_modern.jpg";
 import aetiPreview from "@assets/generated_images/aeti_modern.jpg";
 import saloonPreview from "@assets/generated_images/saloon.png";
