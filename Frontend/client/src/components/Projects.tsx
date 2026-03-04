@@ -7,9 +7,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import restaurantPreview from "@assets/generated_images/restaurant_modern.jpg";
 import studentPreview from "@assets/generated_images/student_modern.jpg";
-import tourismPreview from "@assets/generated_images/food_center_modern.jpg";
 import aetiPreview from "@assets/generated_images/aeti_modern.jpg";
-
+import saloonPreview from "@assets/generated_images/saloon.png";
+import foodCenterPreview from "@assets/generated_images/foodcenter.png";
 
 const projects = [
   {
@@ -41,19 +41,31 @@ const projects = [
     description:
       "Responsive React web app for a food center, deployed on Vercel, highlighting interactive UI and modern frontend skills.",
     technologies: ["react", "tailwindcss", "vercel"],
-    image: tourismPreview,
+    image: foodCenterPreview,
     githubUrl: "https://github.com/kavindulk27/Food-Center",
     demoUrl: "https://kumanayakafoodcenter.vercel.app",
   },
   {
     id: 4,
     title: "AETI website",
+    type: "Collaborative Project",
     description:
       "A modern, responsive web platform for the Automobile Engineering Training Institute (NAITA), showcasing courses and institutional details.",
     technologies: ["react", "tailwindcss", "django", "postgres"],
     image: aetiPreview,
     githubUrl: "",
     demoUrl: "https://aeti.naita.gov.lk/",
+  },
+  {
+    id: 5,
+    title: "Saloon Booking System",
+    type: "Individual Project",
+    description:
+      "Web-based appointment booking platform for salons. Users can register, log in, and book services online with real-time data handling.",
+    technologies: ["react", "tailwindcss", "firebase hosting", "firebase auth", "firebase firestore"],
+    image: saloonPreview,
+    githubUrl: "https://github.com/kavindulk27/Saloon-Booking-System",
+    demoUrl: "https://saloon-booking-system-895e6.web.app/",
   },
 ];
 
@@ -87,11 +99,12 @@ export default function Projects() {
               whileHover={{ y: -6 }}
             >
               <Card className="glass-panel flex h-full w-full max-w-[340px] flex-col overflow-hidden rounded-[1.4rem] border-border/60">
-                <div className="h-40 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-10" />
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-105"
                   />
                 </div>
                 <CardHeader className="px-4 pb-1 pt-4">
@@ -153,11 +166,12 @@ export default function Projects() {
                   whileHover={{ y: -6 }}
                 >
                   <Card className="glass-panel flex h-full w-full max-w-[340px] flex-col overflow-hidden rounded-[1.4rem] border-border/60">
-                    <div className="h-40 overflow-hidden">
+                    <div className="relative h-48 overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-10" />
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-105"
                       />
                     </div>
                     <CardHeader className="px-4 pb-1 pt-4">

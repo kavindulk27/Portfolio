@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
-import profileImage from "@assets/generated_images/WhatsApp Image 2025-10-03 at 09.06.23_f57b9b98.jpg";
+const profileImage = "/profile.jpg";
 
 const stack = [
   { label: "Frontend", icon: Code2 },
