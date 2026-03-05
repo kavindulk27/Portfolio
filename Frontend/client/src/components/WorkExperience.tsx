@@ -4,6 +4,21 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
+    role: "Freelance Full-Stack Developer",
+    company: "Self-Employed",
+    duration: "2025 - Present",
+    description:
+      "Developing modern, responsive web applications for clients using React and Django. Focused on building scalable front-end architectures & Backends, RESTful APIs, and clean UI/UX designs. Experienced in deploying applications, optimizing performance, and managing full project lifecycles from requirement analysis to production.",
+    achievements: [
+      "React & Next.js Frontend",
+      "Django Backend Systems",
+      "RESTful API Development",
+      "Tailwind CSS / UI Design",
+      "Firebase & Vercel Ops",
+      "Full Project Lifecycle",
+    ],
+  },
+  {
     role: "Software Developer Intern",
     company: "NAITA - National Apprentice and Industrial Training Authority",
     duration: "Sep 2025 - Mar 2026",
