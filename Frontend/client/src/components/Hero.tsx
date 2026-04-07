@@ -82,7 +82,7 @@ export default function Hero() {
   const handleDownloadCV = () => {
     setIsDownloading(true);
     const link = document.createElement("a");
-    link.href = "/Kavindu Kumanayaka CV.pdf";
+    link.href = "/Kavindu_Kumanayaka_CV.pdf";
     link.download = "Kavindu Kumanayaka CV.pdf";
     link.click();
 
