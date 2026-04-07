@@ -51,7 +51,7 @@ const projects = [
     type: "Collaborative Project",
     description:
       "A modern, responsive web platform for the Automobile Engineering Training Institute (NAITA), showcasing courses and institutional details.",
-    technologies: ["react", "tailwindcss", "django", "postgres"],
+    technologies: ["react", "tailwindcss", "django", "postgres","node.js"],
     image: aetiPreview,
     githubUrl: "",
     demoUrl: "https://aeti.naita.gov.lk/",
