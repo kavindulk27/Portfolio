@@ -18,7 +18,7 @@ const projects = [
     type: "Individual Project",
     description:
       "A full-stack management system that automates ordering, billing, reservations, and inventory flow.",
-    technologies: ["React", "TypeScript", "tailwindcss", "django", "sqlite"],
+    technologies: ["React","node.js", "TypeScript", "tailwindcss", "django", "sqlite"],
     image: restaurantPreview,
     githubUrl: "https://github.com/kavindulk27/Resturant-web",
     demoUrl: "#",
@@ -40,7 +40,7 @@ const projects = [
     type: "Individual Project",
     description:
       "Responsive React web app for a food center, deployed on Vercel, highlighting interactive UI and modern frontend skills.",
-    technologies: ["react", "tailwindcss", "vercel"],
+    technologies: ["react","node.js", "tailwindcss", "vercel"],
     image: foodCenterPreview,
     githubUrl: "https://github.com/kavindulk27/Food-Center",
     demoUrl: "https://kumanayakafoodcenter.vercel.app",
@@ -62,7 +62,7 @@ const projects = [
     type: "Individual Project",
     description:
       "Web-based appointment booking platform for salons. Users can register, log in, and book services online with real-time data handling.",
-    technologies: ["react", "tailwindcss", "firebase hosting", "firebase auth", "firebase firestore"],
+    technologies: ["react", "node.js", "tailwindcss", "firebase hosting", "firebase auth", "firebase firestore"],
     image: saloonPreview,
     githubUrl: "https://github.com/kavindulk27/Saloon-Booking-System",
     demoUrl: "https://saloon-booking-system-895e6.web.app/",
