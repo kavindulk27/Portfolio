@@ -82,8 +82,8 @@ export default function Hero() {
   const handleDownloadCV = () => {
     setIsDownloading(true);
     const link = document.createElement("a");
-    link.href = "/Kavindu-Kumanayaka-FlowCV-Resume-20260120.pdf";
-    link.download = "Kavindu-Kumanayaka-FlowCV-Resume-20260120.pdf";
+    link.href = "/Kavindu Kumanayaka CV.pdf";
+    link.download = "Kavindu Kumanayaka CV.pdf";
     link.click();
 
     setTimeout(() => {
