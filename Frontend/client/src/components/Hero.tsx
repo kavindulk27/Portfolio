@@ -45,7 +45,7 @@ const itemVariants = {
 };
 
 export default function Hero() {
-  const typingText = "Full Stack Software Engineer";
+  const typingText = "Full Stack Software Developer";
   const [isDownloading, setIsDownloading] = useState(false);
   const [isDownloaded, setIsDownloaded] = useState(false);
   const [typedText, setTypedText] = useState("");

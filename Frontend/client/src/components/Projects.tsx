@@ -65,7 +65,7 @@ const projects = [
     technologies: ["react", "node.js", "tailwindcss", "firebase hosting", "firebase auth", "firebase firestore"],
     image: saloonPreview,
     githubUrl: "https://github.com/kavindulk27/Saloon-Booking-System",
-    demoUrl: "https://saloon-booking-system-895e6.web.app/",
+    demoUrl: "https://saloon-booking-system-weld.vercel.app/",
   },
 ];
 
